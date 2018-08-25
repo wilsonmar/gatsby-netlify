@@ -37,8 +37,20 @@ fancy_echo "Running base-install.sh to create localhost:$GATSBY_IP..."
 
 ### upath@1.0.4: The engine "node" is incompatible with this module. Expected version ">=4 <=9".
 # So we go with v8.11.4 (Latest LTS: Carbon) as of Aug 23, 2018.
+# TODO: Check for nvm install
+#nvm install v8.11.4
+node --version  # v8.11.4
 
-node --version
+   module="yarn"
+   if grep -q "$(npm -g list "$module" | grep "$module")" "(empty)" ; then  # no reponse, so add:
+      fancy_echo "Installing $module ..."
+      npm install -g $module
+   else
+      fancy_echo "$module already installed globally. Upgrade just in case it changed ..."
+      npm update -g $module  # Warning: yarn 1.9.4 is already installed and up-to-date
+   fi
+yarn --version  # 1.9.4
+
 
 ### install the Gatsby CLI using npm:
    module="gatsby-cli"
@@ -53,9 +65,7 @@ node --version
    npm list "$module"
    gatsby --version  # 1.1.58
 
-# Check response above for
-   fancy_echo "Installing yarn using Homebrew ..."
-   brew install yarn
+
 # Other prerequisites: babel, etc.
 
 
