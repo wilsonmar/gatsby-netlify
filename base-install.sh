@@ -35,6 +35,11 @@ fancy_echo "Running base-install.sh to create localhost:$GATSBY_IP..."
          mkdir $GATSBY_PROJECT && cd $GATSBY_PROJECT
          fancy_echo "PWD=$PWD"
 
+### upath@1.0.4: The engine "node" is incompatible with this module. Expected version ">=4 <=9".
+# So we go with v8.11.4 (Latest LTS: Carbon) as of Aug 23, 2018.
+
+node --version
+
 ### install the Gatsby CLI using npm:
    module="gatsby-cli"
    if grep -q "$(npm -g list "$module" | grep "$module")" "(empty)" ; then  # no reponse, so add:
