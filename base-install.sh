@@ -23,22 +23,36 @@ fi
 ### TODO: Change the default port from 8000 to 8111 or something else:
 fancy_echo "Running base-install.sh to create localhost:$GATSBY_IP..."
 
+### Delete container folder from previous run (or it will cause error), thus the container:
+   ### Download again, but things have probably changed anyway:
+   cd ~/ 
+         if [ -d "$GATSBY_PROJECT" ]; then  # found:
+            # Delete container folder from previous run (or it will cause error), thus the container:
+            fancy_echo "Deleting container folder: ~/$GATSBY_PROJECT ..."
+            rm -rf $GATSBY_PROJECT
+         fi
+         # Create container folder again:
+         mkdir $GATSBY_PROJECT && cd $GATSBY_PROJECT
+         fancy_echo "PWD=$PWD"
 
-### install the Gatsby CLI globally:
+### install the Gatsby CLI using npm:
    module="gatsby-cli"
-   if grep -q "$(npm list -g "$module" | grep "$module")" "(empty)" ; then  # no reponse, so add:
+   if grep -q "$(npm -g list "$module" | grep "$module")" "(empty)" ; then  # no reponse, so add:
       fancy_echo "Installing $module ..."
       npm install -g $module
    else
-      fancy_echo "$module already installed ..."
+      fancy_echo "$module already installed globally. Upgrade just in case it changed ..."
+      npm update -g $module  # Warning: yarn 1.9.4 is already installed and up-to-date
    fi
-#   fancy_echo "NPM_MODULE_INSTALL $module version now ..." 
-   npm list -g "$module"
+   fancy_echo "NPM_MODULE_INSTALL $module version now ..." 
+   npm list "$module"
    gatsby --version  # 1.1.58
 
-# Check response above for:
-# brew upgrade yarn
+# Check response above for
+   fancy_echo "Installing yarn using Homebrew ..."
+   brew install yarn
 # Other prerequisites: babel, etc.
+
 
 ### Cleanup:
 
@@ -48,18 +62,6 @@ fancy_echo "Running base-install.sh to create localhost:$GATSBY_IP..."
          fancy_echo "gatsby running on PID=$PID. killing it ..."
          kill $PID
       fi
-
-   ### Delete container folder from previous run (or it will cause error), thus the container:
-   ### Download again, but things have probably changed anyway:
-   cd ~/ 
-         if [ -d "gatsby" ]; then  # found:
-            # Delete container folder from previous run (or it will cause error), thus the container:
-            fancy_echo "Deleting container folder: gatsby ..."
-            rm -rf gatsby 
-         fi
-         # Create container folder again:
-         mkdir gatsby && cd gatsby
-         fancy_echo "PWD=$PWD"
 
 if [ "$GATSBY_PROJECT" = "gatsby-netlify" ]; then
    gatsby new "$GATSBY_PROJECT" https://github.com/wilsonmar/gatsby-netlify
