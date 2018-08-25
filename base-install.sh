@@ -1,13 +1,9 @@
 #!/usr/local/bin/bash 
 
-# This is base-install.sh from https://github.com/wilsonmar/gatsby-store
-# Alternative is https://snipcart.com/blog/webtask-baas-serverless-tutorial
+# This is base-install.sh from https://github.com/wilsonmar/gatsby-netlify
+# Based on https://github.com/snipcart/gatsby-netlify
+# which makes use of https://www.gatsbyjs.org/ (Twitter: #buildwithgatsby)
 
-# https://www.gatsbyjs.org/
-# based on https://github.com/gatsbyjs/gatsby/
-
-# https://github.com/serverless/components/tree/master/examples/retail-app/
-# Twitter: #buildwithgatsby
 
 function fancy_echo() {
    local fmt="$1"; shift
@@ -17,7 +13,7 @@ function fancy_echo() {
 
 GATSBY_PROJECT="$1"  # from 1st argument
 if [[ -z "${GATSBY_PROJECT// }"  ]]; then  #it's blank so assign default:
-   GATSBY_PROJECT="gatsby-starter-bulma-storybook"
+   GATSBY_PROJECT="gatsby-netlify" # gatsby-starter-bulma-storybook"
 fi
 
 GATSBY_IP="$2"       # from 2nd argument
@@ -65,8 +61,17 @@ fancy_echo "Running base-install.sh to create localhost:$GATSBY_IP..."
          mkdir gatsby && cd gatsby
          fancy_echo "PWD=$PWD"
 
+if [ "$GATSBY_PROJECT" = "gatsby-netlify" ]; then
+   gatsby new "$GATSBY_PROJECT" https://github.com/wilsonmar/gatsby-netlify
+
+   # The repo was forked from https://github.com/snipcart/gatsby-netlify
+   # as described by https://snipcart.com/blog/static-forms-serverless-gatsby-netlify
+   # A demo of it by the original author is at https://gatsby-netlify-snipcart.netlify.com/
+
+   # TODO: Put https://github.com/wilsonmar/gatsby-netlify on Netlify.com CDN
+
 # See list at https://www.gatsbyjs.org/docs/gatsby-starters/
-if [ "$GATSBY_PROJECT" = "snipcart-jekyll-integration" ]; then
+elif [ "$GATSBY_PROJECT" = "snipcart-jekyll-integration" ]; then
    fancy_echo "$GATSBY_PROJECT"
    # Alternative  - https://snipcart.com/blog/static-site-e-commerce-part-2-integrating-snipcart-with-jekyll
      # by Maxime Laboissonniere
@@ -90,13 +95,6 @@ elif [ "$GATSBY_PROJECT" = "gatsby-starter-blog" ]; then
 			# by Kyle Mathews   
          # https://github.com/snipcart/snipcart-gatsby-integration # last changed Jan 28, 2016
 
-#elif [ "$GATSBY_PROJECT" = "gatsby-netlify" ]; then
-#   gatsby new "$GATSBY_PROJECT" https://github.com/wilsonmar/gatsby-netlify
-
-   # The repo was forked from https://github.com/snipcart/gatsby-netlify
-   # as described by https://snipcart.com/blog/static-forms-serverless-gatsby-netlify
-   # A demo of it by the original author is at https://gatsby-netlify-snipcart.netlify.com/
-
 elif [ "$GATSBY_PROJECT" = "gatsby-material-starter" ]; then
    # Alternative 3 - Per https://snipcart.com/blog/pwa-example-ecommerce-gatsby
    # A PWA Example: Build an E-Commerce Progressive Web App with Gatsby JULY 03, 2018
@@ -112,6 +110,8 @@ elif [ "$GATSBY_PROJECT" = "gatsby-starter-bulma-storybook" ]; then
    # BLAH: I'm getting "Failed to compile with 7 errors"
 
 #elif [ "$GATSBY_PROJECT" = "gatsby-???" ]; then
+   # https://github.com/serverless/components/tree/master/examples/retail-app/
+   # Demo at: http://retail-9mhe8mxcvi.example.com.s3-website-us-east-1.amazonaws.com/index.html
 
 #elif [ "$GATSBY_PROJECT" = "snipcart-gatsby-grav.netlify.com" ]; then
 #   gatsby new "$GATSBY_PROJECT" https://snipcart-gatsby-grav.netlify.com
