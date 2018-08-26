@@ -16,7 +16,7 @@ export default class Products extends React.Component {
         return netlifyIdentity.currentUser() != null
             ? this.props.data.allMarkdownRemark.edges
             : this.props.data.allMarkdownRemark.edges
-                .filter(x => !x.node.frontmatter.private)  
+                .filter(x => !x.node.frontmatter.private)
     }
 
     updateProducts(){
@@ -32,13 +32,13 @@ export default class Products extends React.Component {
     render(){
         return (
         <div>
-            <h1>Products</h1>
+            <h1>Chokecherry Jams For Sale</h1>
             <div>To login use the email: geeks@snipcart.com with password: admin</div>
             <div>You can read the full blog post <a href="https://snipcart.com/blog/static-forms-serverless-gatsby-netlify">here</a></div>
-            <div>You can check the code repo <a href="https://github.com/snipcart/gatsby-netlify">here</a></div>
+            <div id="home-text-bottom">You can check the code repo <a href="https://github.com/snipcart/gatsby-netlify">here</a></div>
 
 
-            <ul className={styles.itemsList}>
+            <ul className={styles.itemsList} id="home-page-grid">
                 {this.state.products.map((o, index) =>
                     <li key={index} className={styles.item}>
                         <Link to={o.node.frontmatter.loc}>

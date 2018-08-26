@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'gatsby-link';
 const netlifyIdentity = require("netlify-identity-widget");
 
-export default class Header extends React.Component {  
-  componentDidMount(){    
+export default class Header extends React.Component {
+  componentDidMount(){
     netlifyIdentity.init();
   }
-  
+
   render(){
     return (
     <div
