@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash 
+#!/bin/bash
 
 # This is base-install.sh from https://github.com/wilsonmar/gatsby-netlify
 # Based on https://github.com/snipcart/gatsby-netlify
