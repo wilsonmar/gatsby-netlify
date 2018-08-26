@@ -66,8 +66,7 @@ yarn --version  # 1.9.4
    gatsby --version  # 1.1.58
 
 
-# Other prerequisites: babel, etc.
-
+# TODO: Other prerequisites: babel, etc.?
 
 ### Cleanup:
 
