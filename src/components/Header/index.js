@@ -11,7 +11,7 @@ export default class Header extends React.Component {
     return (
     <div
       style={{
-        background: 'rebeccapurple',
+        background: '#1798c1',
         marginBottom: '1.45rem',
       }}
     >
@@ -32,7 +32,7 @@ export default class Header extends React.Component {
               textDecoration: 'none',
             }}
           >
-            Gatsby
+            SLDS
           </Link>
         </h1>
         <div data-netlify-identity-menu></div>

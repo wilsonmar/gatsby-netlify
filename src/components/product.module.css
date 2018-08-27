@@ -1,5 +1,5 @@
 .productFigure img {
-    border: solid 1px rebeccapurple;
+    border: solid 1px #1798c1;
     border-radius: 50%;
     padding: 1em;
     width: 250px;
@@ -20,7 +20,7 @@ section {
 
 .buyButton {
     border: none;
-    background-color: rebeccapurple;
+    background-color: #1798c1;
     color: white;
     padding: 0.5em;
     border-radius: 5px;
@@ -35,6 +35,6 @@ section {
 .breadcrumb a {
     text-decoration: none;
     font-size: smaller;
-    border-bottom: solid 1px rebeccapurple;
+    border-bottom: solid 1px #1798c1;
     padding-bottom: 2px;
 }
