@@ -188,7 +188,6 @@ fi
    fi      
 #   npm list -g "$module"
    # ls -al node_modules
-exit
 
 ### TODO: Build and Run tests
 # https://www.robinwieruch.de/react-testing-tutorial/
