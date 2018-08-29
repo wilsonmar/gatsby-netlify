@@ -1,0 +1,21 @@
+{
+  "short_name": "gat_net",
+  "name": "Gatsby Netlify",
+  "icons": [
+    {
+      "src": "/images/hat.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/hat.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/gatsby-netlify/?source=pwa",
+  "background_color": "#1798c1",
+  "display": "standalone",
+  "scope": "/gatsby-netlify/",
+  "theme_color": "#1798c1"
+}
