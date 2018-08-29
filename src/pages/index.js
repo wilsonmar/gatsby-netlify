@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styles from './products.module.css'
+
 const netlifyIdentity = require("netlify-identity-widget");
 
 export default class Products extends React.Component {

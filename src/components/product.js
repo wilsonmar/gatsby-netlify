@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import styles from './product.module.css'
 import fourOfour from './../pages/404.js'
+import register from './../../register.js'
 const netlifyIdentity = require("netlify-identity-widget");
 
 const NETLIFY_FUNC = 'gatsby-netlify-snipcart.netlify.com/.netlify/functions'
@@ -64,12 +65,12 @@ export default class Product extends React.Component {
                 <Link to='/'>Back to the products</Link>
             </div>
             <p>{this.props.data.markdownRemark.frontmatter.desc}</p>
-    
+
             <section className="section__product">
                 <figure className={styles.productFigure}>
                     <img src={this.props.data.markdownRemark.frontmatter.image} />
                 </figure>
-    
+
                 <article>
                     {this.props.data.markdownRemark.frontmatter.description}
                 </article>
@@ -79,7 +80,7 @@ export default class Product extends React.Component {
             </section>
             <section>
             <h3 className="reviews">Reviews</h3>
-    
+
             <div className="reviews__list">
                 {this.state.reviews.map((o) =>
                     <p key={o.number}>
@@ -90,7 +91,7 @@ export default class Product extends React.Component {
             </div>
 
             <form className="review__form" name={formId} method="POST" data-netlify-honeypot="bot-field" data-netlify="true">
-                <input type="hidden" name="form-name" value={formId} />    
+                <input type="hidden" name="form-name" value={formId} />
                 <div className="field__form">
                     <label>NAME</label>
                     <input type="text" name="name"></input>
@@ -109,7 +110,7 @@ export default class Product extends React.Component {
             </section>
         </div>)
     }
-    
+
 }
 
 export const query = graphql`
